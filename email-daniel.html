@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email to Daniel | OPTIMI Group</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+            line-height: 1.7;
+        }
+        .email-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .email-header {
+            background: linear-gradient(135deg, #070810 0%, #1a1d2e 100%);
+            padding: 40px;
+            text-align: center;
+        }
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #d4af37 0%, #c49b30 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #070810;
+        }
+        .email-body {
+            padding: 40px;
+        }
+        .greeting {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #070810;
+            margin-bottom: 24px;
+        }
+        p {
+            color: #444;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .highlight {
+            background: #f8f4e8;
+            border-left: 4px solid #d4af37;
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            margin: 28px 0;
+        }
+        .highlight h3 {
+            color: #070810;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .stats-row {
+            display: flex;
+            gap: 20px;
+            margin-top: 16px;
+        }
+        .stat {
+            flex: 1;
+            text-align: center;
+            background: white;
+            padding: 16px;
+            border-radius: 10px;
+            border: 1px solid #e5e5e5;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #d4af37;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 4px;
+        }
+        .link-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: #f8f9fa;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .link-card:hover {
+            border-color: #d4af37;
+            transform: translateX(4px);
+        }
+        .link-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #d4af37 0%, #c49b30 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .link-content h4 {
+            color: #070810;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .link-content p {
+            color: #666;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        .link-arrow {
+            margin-left: auto;
+            color: #d4af37;
+            font-size: 1.2rem;
+        }
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #070810;
+            margin: 32px 0 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .signature {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #e5e5e5;
+        }
+        .signature p {
+            margin-bottom: 8px;
+        }
+        .signature .name {
+            font-weight: 700;
+            color: #070810;
+            font-size: 1.1rem;
+        }
+        .signature .title {
+            color: #d4af37;
+            font-size: 0.9rem;
+        }
+        .email-footer {
+            background: #f8f9fa;
+            padding: 24px 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .copy-section {
+            background: #070810;
+            color: white;
+            padding: 30px;
+            margin: 20px;
+            border-radius: 12px;
+        }
+        .copy-section h3 {
+            color: #d4af37;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+        .copy-text {
+            background: #1a1d2e;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            line-height: 1.8;
+        }
+        .placeholder {
+            background: #fff3cd;
+            border: 1px dashed #ffc107;
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: #856404;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <div class="logo">
+                <div class="logo-icon">OG</div>
+                OPTIMI Group
+            </div>
+        </div>
+
+        <div class="email-body">
+            <h1 class="greeting">Hi Daniel,</h1>
+
+            <p>
+                It was a pleasure speaking with you earlier! As promised, I'm sending you everything
+                we discussed to help you move forward with your property in Paris 9th.
+            </p>
+
+            <div class="highlight">
+                <h3>Your Revenue Projection Summary</h3>
+                <p style="margin-bottom: 0;">Based on our analysis with the 90-day Airbnb + Mobility Lease strategy:</p>
+                <div class="stats-row">
+                    <div class="stat">
+                        <div class="stat-value">€21,165</div>
+                        <div class="stat-label">Net 2026 (6 mo)</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">€36,218</div>
+                        <div class="stat-label">Net 2027 (12 mo)</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">€57,383</div>
+                        <div class="stat-label">Total 18 months</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Your Resources</h2>
+
+            <a href="https://optimi-estimation-daniel-v2.vercel.app" class="link-card" target="_blank">
+                <div class="link-icon">📊</div>
+                <div class="link-content">
+                    <h4>Your Personalized Revenue Estimation</h4>
+                    <p>Detailed 2026-2027 projections with calendar views and breakdown</p>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <div class="placeholder">
+                ⚠️ <strong>INSERT VIDEO LINK:</strong> Add the video link of you in Paris with Mathieu (SuperHote CEO)
+            </div>
+
+            <a href="[INSERT_VIDEO_LINK]" class="link-card" target="_blank">
+                <div class="link-icon">🎬</div>
+                <div class="link-content">
+                    <h4>Video: My Story in Paris</h4>
+                    <p>A quick video introducing myself and our partnership with SuperHote</p>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <div class="placeholder">
+                ⚠️ <strong>INSERT CONTRACT LINK:</strong> Add your contract document link (PDF or DocuSign)
+            </div>
+
+            <a href="[INSERT_CONTRACT_LINK]" class="link-card" target="_blank">
+                <div class="link-icon">📄</div>
+                <div class="link-content">
+                    <h4>Management Contract</h4>
+                    <p>Our standard concierge management agreement for your review</p>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <div class="placeholder">
+                ⚠️ <strong>INSERT ONBOARDING FORM LINK:</strong> Add your onboarding form link (Typeform, Google Form, etc.)
+            </div>
+
+            <a href="[INSERT_ONBOARDING_FORM]" class="link-card" target="_blank">
+                <div class="link-icon">📝</div>
+                <div class="link-content">
+                    <h4>Onboarding Form</h4>
+                    <p>Property details, access information, and your preferences</p>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <div class="placeholder">
+                ⚠️ <strong>INSERT SKOOL COMMUNITY LINK:</strong> Add the SuperHote Skool community link
+            </div>
+
+            <a href="[INSERT_SKOOL_LINK]" class="link-card" target="_blank">
+                <div class="link-icon">👥</div>
+                <div class="link-content">
+                    <h4>SuperHote Skool Community</h4>
+                    <p>Join our exclusive community of property owners and hosts</p>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <h2 class="section-title">Next Steps</h2>
+
+            <p>
+                <strong>1. Review the documents</strong> — Take your time to go through the contract and estimation.<br>
+                <strong>2. Fill out the onboarding form</strong> — This helps us prepare for your property visit.<br>
+                <strong>3. Schedule your property visit</strong> — We'll come with our photographer to get everything ready.<br>
+                <strong>4. Go live within 15 days</strong> — Start generating revenue!
+            </p>
+
+            <p>
+                If you have any questions, don't hesitate to reach out. I'm excited to help you unlock
+                your property's full potential!
+            </p>
+
+            <div class="signature">
+                <p class="name">Jean-Marc Taouo</p>
+                <p class="title">Founder & CEO, OPTIMI Group</p>
+                <p>📧 contact@optimi-group.com</p>
+                <p>📞 [Your Phone Number]</p>
+                <p>🌐 www.optimi-group.com</p>
+            </div>
+        </div>
+
+        <div class="email-footer">
+            OPTIMI Group | 50 Avenue des Champs-Élysées, 75008 Paris
+        </div>
+    </div>
+
+    <div class="copy-section">
+        <h3>📋 Plain Text Version (Copy/Paste for Email)</h3>
+        <div class="copy-text">Subject: Daniel - Your Revenue Estimation & Next Steps | OPTIMI Group
+
+Hi Daniel,
+
+It was a pleasure speaking with you earlier! As promised, I'm sending you everything we discussed to help you move forward with your property in Paris 9th.
+
+📊 YOUR REVENUE PROJECTION (90-day Airbnb + Mobility Lease)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• 2026 (6 months): €21,165 net
+• 2027 (full year): €36,218 net
+• Total 18 months: €57,383 net
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📎 YOUR RESOURCES
+━━━━━━━━━━━━━━━━━
+
+1️⃣ Personalized Revenue Estimation
+https://optimi-estimation-daniel-v2.vercel.app
+
+2️⃣ Video: My Story in Paris (with Mathieu, CEO of SuperHote)
+[INSERT_VIDEO_LINK]
+
+3️⃣ Management Contract
+[INSERT_CONTRACT_LINK]
+
+4️⃣ Onboarding Form
+[INSERT_ONBOARDING_FORM]
+
+5️⃣ SuperHote Skool Community
+[INSERT_SKOOL_LINK]
+
+🚀 NEXT STEPS
+━━━━━━━━━━━
+1. Review the documents
+2. Fill out the onboarding form
+3. Schedule your property visit
+4. Go live within 15 days!
+
+If you have any questions, don't hesitate to reach out. I'm excited to help you unlock your property's full potential!
+
+Best regards,
+
+Jean-Marc Taouo
+Founder & CEO, OPTIMI Group
+📧 contact@optimi-group.com
+🌐 www.optimi-group.com
+📍 50 Avenue des Champs-Élysées, 75008 Paris</div>
+    </div>
+</body>
+</html>
