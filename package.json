@@ -1,0 +1,10 @@
+{
+  "name": "optimi-estimation-daniel-v2",
+  "version": "1.0.0",
+  "description": "Daniel's Property Revenue Estimation 2026-2027 - OPTIMI Group",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "author": "OPTIMI Group",
+  "license": "MIT"
+}

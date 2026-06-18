@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel's Property | Revenue Estimation 2026-2027 | OPTIMI Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #070810;
+            --bg-secondary: #0f1119;
+            --bg-tertiary: #131623;
+            --bg-card: #1a1d2e;
+            --accent-gold: #d4af37;
+            --accent-gold-dim: rgba(212, 175, 55, 0.15);
+            --accent-blue: #2563eb;
+            --accent-green: #22c55e;
+            --accent-orange: #ff6b35;
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-gold: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Slides Container */
+        .slides-container {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            padding: 80px 60px 100px;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Header */
+        .slide-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: rgba(7, 8, 16, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #c49b30 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: var(--bg-primary);
+        }
+
+        .slide-counter {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .slide-counter span {
+            color: var(--accent-gold);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 76px;
+            left: 0;
+            height: 3px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+            z-index: 100;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 16px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn:hover {
+            background: var(--bg-card);
+            border-color: var(--accent-gold);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Typography */
+        .badge {
+            display: inline-block;
+            background: var(--accent-gold-dim);
+            border: 1px solid var(--border-gold);
+            color: var(--accent-gold);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, #d4af37 50%, #fff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmerText 5s linear infinite;
+        }
+
+        @keyframes shimmerText {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-gold);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-gold-dim);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Stat Cards */
+        .stat-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--accent-gold);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            font-family: 'JetBrains Mono', monospace;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 80px;
+            margin-top: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent-blue) 0%, var(--accent-gold) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -56px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-gold) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .timeline-content {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Revenue Table */
+        .revenue-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 32px;
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .revenue-table th {
+            background: var(--bg-card);
+            padding: 16px 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .revenue-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .revenue-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .revenue-table .highlight-row {
+            background: rgba(34, 197, 94, 0.08);
+        }
+
+        .revenue-table .highlight-row td {
+            color: var(--accent-green);
+            font-weight: 600;
+        }
+
+        .revenue-table .total-row {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .revenue-table .total-row td {
+            font-weight: 700;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+        }
+
+        .revenue-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .revenue-badge.airbnb {
+            background: rgba(255, 56, 92, 0.15);
+            color: #ff385c;
+        }
+
+        .revenue-badge.direct {
+            background: rgba(37, 99, 235, 0.15);
+            color: var(--accent-blue);
+        }
+
+        .revenue-badge.mobility {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--accent-green);
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .year-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .year-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-orange) 100%);
+        }
+
+        .year-card.featured {
+            border-color: var(--accent-gold);
+        }
+
+        .year-card.featured::before {
+            background: linear-gradient(90deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+        }
+
+        .year-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .year-card.featured .year-label {
+            color: var(--accent-green);
+        }
+
+        .year-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .year-breakdown {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .year-breakdown li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .year-breakdown li:last-child {
+            border-bottom: none;
+        }
+
+        .year-breakdown .label {
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .year-breakdown .value {
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .year-total {
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .year-card.featured .year-total {
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .year-total-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .year-total-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .year-card.featured .year-total-value {
+            color: var(--accent-green);
+        }
+
+        /* Calendar View */
+        .calendar-row {
+            display: grid;
+            grid-template-columns: 100px repeat(12, 1fr);
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .calendar-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+        }
+
+        .calendar-month {
+            padding: 12px 8px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .calendar-month.airbnb {
+            background: rgba(255, 56, 92, 0.2);
+            color: #ff385c;
+        }
+
+        .calendar-month.direct {
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--accent-blue);
+        }
+
+        .calendar-month.mobility {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--accent-green);
+        }
+
+        .calendar-month.empty {
+            background: var(--bg-secondary);
+            color: var(--text-muted);
+        }
+
+        .calendar-header {
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            gap: 24px;
+            margin-top: 24px;
+            justify-content: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.airbnb { background: #ff385c; }
+        .legend-dot.direct { background: var(--accent-blue); }
+        .legend-dot.mobility { background: var(--accent-green); }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: 24px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .cta-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #c49b30 100%);
+            color: var(--bg-primary);
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Property Highlight */
+        .property-highlight {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .property-tag {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            padding: 12px 20px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .property-tag .icon {
+            font-size: 1.2rem;
+        }
+
+        /* Commission Info */
+        .commission-note {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent-gold);
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin-top: 24px;
+        }
+
+        .commission-note h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--accent-gold);
+        }
+
+        .commission-note p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .slide {
+                padding: 80px 30px 100px;
+            }
+
+            .slide-header {
+                padding: 16px 30px;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calendar-row {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-value {
+                font-size: 2.2rem;
+            }
+
+            .year-total-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slides-container">
+        <!-- Header -->
+        <div class="slide-header">
+            <div class="logo">
+                <div class="logo-icon">OG</div>
+                OPTIMI Group
+            </div>
+            <div class="slide-counter"><span id="currentSlide">01</span> / <span id="totalSlides">08</span></div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar" id="progressBar" style="width: 12.5%;"></div>
+
+        <!-- Slide 1: Hero -->
+        <div class="slide active" data-slide="1">
+            <div class="slide-content">
+                <span class="badge">Personalized Revenue Estimation</span>
+                <h1 class="hero-title">Daniel, Your Property's<br>Full Potential</h1>
+                <p class="section-subtitle">
+                    A detailed financial projection combining Airbnb, direct bookings, and mobility lease
+                    to maximize your 56m² apartment in Paris 9th.
+                </p>
+                <div class="property-highlight">
+                    <div class="property-tag">
+                        <span class="icon">📍</span>
+                        Paris 9th - Opera
+                    </div>
+                    <div class="property-tag">
+                        <span class="icon">📐</span>
+                        56 m²
+                    </div>
+                    <div class="property-tag">
+                        <span class="icon">🗓️</span>
+                        Starting July 2026
+                    </div>
+                    <div class="property-tag">
+                        <span class="icon">⚖️</span>
+                        90 Days Airbnb Limit
+                    </div>
+                </div>
+                <div class="card-grid" style="margin-top: 48px;">
+                    <div class="stat-card">
+                        <div class="stat-value">€21,165</div>
+                        <div class="stat-label">Net Revenue 2026</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">€36,218</div>
+                        <div class="stat-label">Net Revenue 2027</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">€57,383</div>
+                        <div class="stat-label">Total Net (18 months)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Strategy Overview -->
+        <div class="slide" data-slide="2">
+            <div class="slide-content">
+                <span class="badge">The Strategy</span>
+                <h2 class="section-title">A Smart Mix for Maximum Returns</h2>
+                <p class="section-subtitle">
+                    Combining three revenue streams to work within the 90-day Airbnb limit while maximizing your annual income.
+                </p>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon">🏠</div>
+                        <h3>Airbnb (90 Days)</h3>
+                        <p>High-season short-term rentals at premium rates. We target July-September when Paris tourism peaks and nightly rates are highest.</p>
+                        <div style="margin-top: 16px;">
+                            <span class="revenue-badge airbnb">€200-250/night</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🎯</div>
+                        <h3>Direct Booking (30 Days)</h3>
+                        <p>Returning guests and our marketing channels. No OTA fees means better margins. We build your private guest list over time.</p>
+                        <div style="margin-top: 16px;">
+                            <span class="revenue-badge direct">15% Lower Commission</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📋</div>
+                        <h3>Mobility Lease</h3>
+                        <p>Furnished rentals for professionals (1-10 months). Stable guaranteed income during off-peak periods. No 90-day limit applies.</p>
+                        <div style="margin-top: 16px;">
+                            <span class="revenue-badge mobility">€2,300/month</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="commission-note">
+                    <h4>Commission Structure (After Deduction)</h4>
+                    <p><strong>Airbnb:</strong> 20% commission | <strong>Direct Booking:</strong> 15% commission | <strong>Mobility Lease:</strong> 15% commission</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: 2026 Detailed Breakdown -->
+        <div class="slide" data-slide="3">
+            <div class="slide-content">
+                <span class="badge">Year 1 Projection</span>
+                <h2 class="section-title">2026 Revenue Breakdown</h2>
+                <p class="section-subtitle">
+                    Starting July 1st, 2026 — 6 months of optimized rental strategy.
+                </p>
+
+                <!-- Calendar View -->
+                <div style="background: var(--bg-tertiary); border-radius: 16px; padding: 24px; margin-bottom: 32px; border: 1px solid var(--border);">
+                    <h4 style="margin-bottom: 20px; font-size: 1rem;">2026 Rental Calendar</h4>
+                    <div class="calendar-row">
+                        <div class="calendar-label"></div>
+                        <div class="calendar-month calendar-header">Jan</div>
+                        <div class="calendar-month calendar-header">Feb</div>
+                        <div class="calendar-month calendar-header">Mar</div>
+                        <div class="calendar-month calendar-header">Apr</div>
+                        <div class="calendar-month calendar-header">May</div>
+                        <div class="calendar-month calendar-header">Jun</div>
+                        <div class="calendar-month calendar-header">Jul</div>
+                        <div class="calendar-month calendar-header">Aug</div>
+                        <div class="calendar-month calendar-header">Sep</div>
+                        <div class="calendar-month calendar-header">Oct</div>
+                        <div class="calendar-month calendar-header">Nov</div>
+                        <div class="calendar-month calendar-header">Dec</div>
+                    </div>
+                    <div class="calendar-row">
+                        <div class="calendar-label">2026</div>
+                        <div class="calendar-month empty">—</div>
+                        <div class="calendar-month empty">—</div>
+                        <div class="calendar-month empty">—</div>
+                        <div class="calendar-month empty">—</div>
+                        <div class="calendar-month empty">—</div>
+                        <div class="calendar-month empty">—</div>
+                        <div class="calendar-month airbnb">Airbnb</div>
+                        <div class="calendar-month airbnb">Airbnb</div>
+                        <div class="calendar-month airbnb">Airbnb</div>
+                        <div class="calendar-month mobility">Mob.</div>
+                        <div class="calendar-month mobility">Mob.</div>
+                        <div class="calendar-month mobility">Mob.</div>
+                    </div>
+                    <div class="legend">
+                        <div class="legend-item"><div class="legend-dot airbnb"></div> Airbnb (90 days)</div>
+                        <div class="legend-item"><div class="legend-dot mobility"></div> Mobility Lease</div>
+                        <div class="legend-item" style="color: var(--text-muted);">— Not started yet</div>
+                    </div>
+                </div>
+
+                <table class="revenue-table">
+                    <thead>
+                        <tr>
+                            <th>Period</th>
+                            <th>Strategy</th>
+                            <th>Days</th>
+                            <th>Rate</th>
+                            <th>Gross Revenue</th>
+                            <th>Commission</th>
+                            <th>Net Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td>July - September</td>
+                            <td><span class="revenue-badge airbnb">Airbnb</span></td>
+                            <td>90 days</td>
+                            <td>€250/night × 85%</td>
+                            <td>€19,125</td>
+                            <td>20% (€3,825)</td>
+                            <td>€15,300</td>
+                        </tr>
+                        <tr>
+                            <td>October - December</td>
+                            <td><span class="revenue-badge mobility">Mobility</span></td>
+                            <td>3 months</td>
+                            <td>€2,300/month</td>
+                            <td>€6,900</td>
+                            <td>15% (€1,035)</td>
+                            <td>€5,865</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="4"><strong>TOTAL 2026 (6 months)</strong></td>
+                            <td>€26,025</td>
+                            <td>€4,860</td>
+                            <td>€21,165</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 4: 2027 Detailed Breakdown -->
+        <div class="slide" data-slide="4">
+            <div class="slide-content">
+                <span class="badge">Year 2 Projection</span>
+                <h2 class="section-title">2027 Revenue Breakdown</h2>
+                <p class="section-subtitle">
+                    Full year with enhanced strategy: Airbnb + Direct Bookings + Mobility Lease.
+                </p>
+
+                <!-- Calendar View -->
+                <div style="background: var(--bg-tertiary); border-radius: 16px; padding: 24px; margin-bottom: 32px; border: 1px solid var(--border);">
+                    <h4 style="margin-bottom: 20px; font-size: 1rem;">2027 Rental Calendar</h4>
+                    <div class="calendar-row">
+                        <div class="calendar-label"></div>
+                        <div class="calendar-month calendar-header">Jan</div>
+                        <div class="calendar-month calendar-header">Feb</div>
+                        <div class="calendar-month calendar-header">Mar</div>
+                        <div class="calendar-month calendar-header">Apr</div>
+                        <div class="calendar-month calendar-header">May</div>
+                        <div class="calendar-month calendar-header">Jun</div>
+                        <div class="calendar-month calendar-header">Jul</div>
+                        <div class="calendar-month calendar-header">Aug</div>
+                        <div class="calendar-month calendar-header">Sep</div>
+                        <div class="calendar-month calendar-header">Oct</div>
+                        <div class="calendar-month calendar-header">Nov</div>
+                        <div class="calendar-month calendar-header">Dec</div>
+                    </div>
+                    <div class="calendar-row">
+                        <div class="calendar-label">2027</div>
+                        <div class="calendar-month mobility">Mob.</div>
+                        <div class="calendar-month mobility">Mob.</div>
+                        <div class="calendar-month mobility">Mob.</div>
+                        <div class="calendar-month mobility">Mob.</div>
+                        <div class="calendar-month mobility">Mob.</div>
+                        <div class="calendar-month direct">Direct</div>
+                        <div class="calendar-month airbnb">Airbnb</div>
+                        <div class="calendar-month airbnb">Airbnb</div>
+                        <div class="calendar-month airbnb">Airbnb</div>
+                        <div class="calendar-month mobility">Mob.</div>
+                        <div class="calendar-month mobility">Mob.</div>
+                        <div class="calendar-month mobility">Mob.</div>
+                    </div>
+                    <div class="legend">
+                        <div class="legend-item"><div class="legend-dot airbnb"></div> Airbnb (90 days)</div>
+                        <div class="legend-item"><div class="legend-dot direct"></div> Direct Booking (30 days)</div>
+                        <div class="legend-item"><div class="legend-dot mobility"></div> Mobility Lease</div>
+                    </div>
+                </div>
+
+                <table class="revenue-table">
+                    <thead>
+                        <tr>
+                            <th>Period</th>
+                            <th>Strategy</th>
+                            <th>Duration</th>
+                            <th>Rate</th>
+                            <th>Gross Revenue</th>
+                            <th>Commission</th>
+                            <th>Net Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jan - May</td>
+                            <td><span class="revenue-badge mobility">Mobility</span></td>
+                            <td>5 months</td>
+                            <td>€2,300/month</td>
+                            <td>€11,500</td>
+                            <td>15% (€1,725)</td>
+                            <td>€9,775</td>
+                        </tr>
+                        <tr>
+                            <td>June</td>
+                            <td><span class="revenue-badge direct">Direct</span></td>
+                            <td>30 days</td>
+                            <td>€230/night × 90%</td>
+                            <td>€6,210</td>
+                            <td>15% (€932)</td>
+                            <td>€5,278</td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td>July - September</td>
+                            <td><span class="revenue-badge airbnb">Airbnb</span></td>
+                            <td>90 days</td>
+                            <td>€250/night × 85%</td>
+                            <td>€19,125</td>
+                            <td>20% (€3,825)</td>
+                            <td>€15,300</td>
+                        </tr>
+                        <tr>
+                            <td>Oct - December</td>
+                            <td><span class="revenue-badge mobility">Mobility</span></td>
+                            <td>3 months</td>
+                            <td>€2,300/month</td>
+                            <td>€6,900</td>
+                            <td>15% (€1,035)</td>
+                            <td>€5,865</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="4"><strong>TOTAL 2027 (Full Year)</strong></td>
+                            <td>€43,735</td>
+                            <td>€7,517</td>
+                            <td>€36,218</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 5: Year Comparison -->
+        <div class="slide" data-slide="5">
+            <div class="slide-content">
+                <span class="badge">Side by Side</span>
+                <h2 class="section-title">2026 vs 2027 Comparison</h2>
+                <p class="section-subtitle">
+                    See how your revenue grows from a partial first year to a fully optimized second year.
+                </p>
+
+                <div class="comparison-grid">
+                    <div class="year-card">
+                        <div class="year-label">Year 1 (Partial)</div>
+                        <h3 class="year-title">2026</h3>
+                        <ul class="year-breakdown">
+                            <li>
+                                <span class="label"><span class="revenue-badge airbnb">Airbnb</span></span>
+                                <span class="value">€15,300</span>
+                            </li>
+                            <li>
+                                <span class="label"><span class="revenue-badge mobility">Mobility</span></span>
+                                <span class="value">€5,865</span>
+                            </li>
+                            <li>
+                                <span class="label">Duration</span>
+                                <span class="value">6 months</span>
+                            </li>
+                            <li>
+                                <span class="label">Commission Paid</span>
+                                <span class="value">€4,860</span>
+                            </li>
+                        </ul>
+                        <div class="year-total">
+                            <div class="year-total-label">Net Revenue</div>
+                            <div class="year-total-value">€21,165</div>
+                        </div>
+                    </div>
+
+                    <div class="year-card featured">
+                        <div class="year-label">Year 2 (Full)</div>
+                        <h3 class="year-title">2027</h3>
+                        <ul class="year-breakdown">
+                            <li>
+                                <span class="label"><span class="revenue-badge airbnb">Airbnb</span></span>
+                                <span class="value">€15,300</span>
+                            </li>
+                            <li>
+                                <span class="label"><span class="revenue-badge direct">Direct</span></span>
+                                <span class="value">€5,278</span>
+                            </li>
+                            <li>
+                                <span class="label"><span class="revenue-badge mobility">Mobility</span></span>
+                                <span class="value">€15,640</span>
+                            </li>
+                            <li>
+                                <span class="label">Commission Paid</span>
+                                <span class="value">€7,517</span>
+                            </li>
+                        </ul>
+                        <div class="year-total">
+                            <div class="year-total-label">Net Revenue</div>
+                            <div class="year-total-value">€36,218</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 48px;">
+                    <div class="stat-card" style="display: inline-block; min-width: 300px;">
+                        <div class="stat-value" style="color: var(--accent-green);">€57,383</div>
+                        <div class="stat-label">Total Net Revenue (18 Months)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Why This Works -->
+        <div class="slide" data-slide="6">
+            <div class="slide-content">
+                <span class="badge">The OPTIMI Advantage</span>
+                <h2 class="section-title">Why This Strategy Works</h2>
+                <p class="section-subtitle">
+                    We've refined this approach across 337+ properties. Here's what makes it successful.
+                </p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon">📈</div>
+                        <h3>Peak Season Optimization</h3>
+                        <p>We use your 90 Airbnb days during July-September when Paris tourism peaks and nightly rates reach €250+. Maximum revenue per night.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🔄</div>
+                        <h3>No Vacancy Gaps</h3>
+                        <p>Mobility leases fill the off-peak months with guaranteed income. No empty nights, no lost revenue. Stable cash flow year-round.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">💡</div>
+                        <h3>Direct Booking Growth</h3>
+                        <p>Year 2 introduces direct bookings — returning guests and our marketing channels. Lower commission, higher margins, loyal customers.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">⚖️</div>
+                        <h3>100% Legal Compliance</h3>
+                        <p>We handle registration, the 90-day tracking, and mobility lease contracts. You stay fully compliant with Paris regulations.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🎯</div>
+                        <h3>Premium Location</h3>
+                        <p>Paris 9th (Opera/Grands Boulevards) is prime territory for business travelers and tourists. High demand all year round.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🛡️</div>
+                        <h3>Risk Mitigation</h3>
+                        <p>Three revenue streams mean you're never dependent on one channel. If Airbnb rules change, you have mobility lease and direct bookings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Timeline -->
+        <div class="slide" data-slide="7">
+            <div class="slide-content">
+                <span class="badge">Next Steps</span>
+                <h2 class="section-title">Your Onboarding Timeline</h2>
+                <p class="section-subtitle">
+                    From contract signing to first guest — we move fast without cutting corners.
+                </p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <h4>Contract & Onboarding</h4>
+                            <p>Sign the management contract and complete the onboarding form. We collect property details, access codes, and your preferences. <strong>Day 1-2</strong></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <h4>Property Visit & Photography</h4>
+                            <p>Our team visits for professional photography, staging review, and property assessment. We optimize every detail. <strong>Day 3-5</strong></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <h4>Listing Creation & Optimization</h4>
+                            <p>We create or optimize your Airbnb listing with professional copy, dynamic pricing setup, and SEO optimization. <strong>Day 6-10</strong></p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">4</div>
+                        <div class="timeline-content">
+                            <h4>Go Live & First Bookings</h4>
+                            <p>Your property goes live. First bookings typically arrive within 48-72 hours. Welcome to passive income. <strong>Day 11-15</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: CTA -->
+        <div class="slide" data-slide="8">
+            <div class="slide-content">
+                <div class="cta-section">
+                    <div class="cta-card">
+                        <span class="badge">Let's Get Started</span>
+                        <h2 class="cta-title">Ready to Generate €57,383+ Net Revenue?</h2>
+                        <p class="cta-subtitle">
+                            Daniel, your property in Paris 9th has exceptional potential.<br>
+                            Let's turn it into a profitable asset starting July 2026.
+                        </p>
+
+                        <div class="card-grid" style="max-width: 800px; margin: 0 auto 40px;">
+                            <div class="stat-card">
+                                <div class="stat-value" style="font-size: 2rem;">€21,165</div>
+                                <div class="stat-label">Net 2026 (6 mo)</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" style="font-size: 2rem;">€36,218</div>
+                                <div class="stat-label">Net 2027 (12 mo)</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" style="font-size: 2rem; color: var(--accent-green);">€57,383</div>
+                                <div class="stat-label">Total 18 Months</div>
+                            </div>
+                        </div>
+
+                        <a href="https://calendly.com/contactoptgroup" class="cta-button">
+                            Schedule Property Visit
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+
+                        <div style="margin-top: 40px; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5rem; margin-bottom: 4px;">📧</div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem;">contact@optimi-group.com</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5rem; margin-bottom: 4px;">🌐</div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem;">www.optimi-group.com</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5rem; margin-bottom: 4px;">📍</div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem;">50 Av. Champs-Élysées, Paris</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-buttons">
+            <button class="nav-btn" id="prevBtn" disabled>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Previous
+            </button>
+            <button class="nav-btn" id="nextBtn">
+                Next
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        let currentSlide = 1;
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const currentSlideEl = document.getElementById('currentSlide');
+        const totalSlidesEl = document.getElementById('totalSlides');
+        const progressBar = document.getElementById('progressBar');
+
+        totalSlidesEl.textContent = totalSlides.toString().padStart(2, '0');
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n - 1].classList.add('active');
+
+            currentSlideEl.textContent = n.toString().padStart(2, '0');
+            progressBar.style.width = `${(n / totalSlides) * 100}%`;
+
+            prevBtn.disabled = n === 1;
+            nextBtn.disabled = n === totalSlides;
+
+            if (n === totalSlides) {
+                nextBtn.innerHTML = 'Done <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>';
+            } else {
+                nextBtn.innerHTML = 'Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+            }
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 1) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                if (currentSlide < totalSlides) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                }
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (currentSlide > 1) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            }
+        });
+
+        // Touch swipe
+        let touchStartX = 0;
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > 50) {
+                if (diff > 0 && currentSlide < totalSlides) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                } else if (diff < 0 && currentSlide > 1) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
+            }
+        });
+
+        // Click navigation
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.nav-btn') || e.target.closest('a')) return;
+
+            const clickX = e.clientX;
+            const windowWidth = window.innerWidth;
+
+            if (clickX < windowWidth * 0.3 && currentSlide > 1) {
+                currentSlide--;
+                showSlide(currentSlide);
+            } else if (clickX > windowWidth * 0.7 && currentSlide < totalSlides) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        });
+    </script>
+</body>
+</html>
